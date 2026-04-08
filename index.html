@@ -1,1 +1,338 @@
-<h1>test</h1>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ryan Rosenbaum — Hardware Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  --orange: #ff7a1a;
+  --cream: #fdfaf6;
+  --ink: #111;
+  --ink-light: #777;
+  --border: rgba(255,122,26,0.25);
+  --grid: rgba(255,122,26,0.08);
+}
+
+body {
+  font-family: 'Press Start 2P', monospace;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+/* GRID */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  padding: 1.2rem;
+  display: flex;
+  justify-content: center;
+  background: rgba(253,250,246,0.95);
+  border-bottom: 2px solid var(--border);
+  z-index: 100;
+}
+
+.nav-links {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 10px;
+  text-decoration: none;
+  color: var(--ink-light);
+  letter-spacing: 2px;
+}
+
+/* HERO */
+.hero {
+  padding: 10rem 2rem 6rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.hero-name {
+  font-size: clamp(20px, 5vw, 34px);
+  line-height: 1.8;
+  letter-spacing: 3px;
+}
+
+.hero-name span {
+  display: block;
+  color: var(--orange);
+}
+
+.hero-sub {
+  margin-top: 2rem;
+  max-width: 700px;
+  font-size: 12px;
+  line-height: 2.4;
+  letter-spacing: 1.5px;
+  color: var(--ink-light);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 2.5rem;
+  padding: 14px 22px;
+  font-size: 10px;
+  text-decoration: none;
+  border: 2px solid var(--orange);
+  letter-spacing: 2px;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: white;
+}
+
+/* SECTIONS */
+.section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 6rem 2rem;
+}
+
+.section-title {
+  font-size: 14px;
+  margin-bottom: 2rem;
+  color: var(--orange);
+  letter-spacing: 2px;
+}
+
+/* SKILLS */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.skill-card {
+  border: 2px solid var(--border);
+  padding: 1.2rem;
+}
+
+.skill-name {
+  font-size: 10px;
+  margin-bottom: 0.6rem;
+}
+
+.skill-desc {
+  font-size: 9px;
+  line-height: 2;
+  color: var(--ink-light);
+}
+
+/* PROJECTS */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.project-card {
+  border: 2px solid var(--border);
+  background: white;
+}
+
+.project-image {
+  height: 140px;
+  background: #ccc;
+  border-bottom: 2px solid var(--border);
+}
+
+.project-content {
+  padding: 1rem;
+}
+
+.project-title {
+  font-size: 10px;
+  margin-bottom: 0.6rem;
+}
+
+.project-desc {
+  font-size: 9px;
+  line-height: 2;
+  color: var(--ink-light);
+}
+
+/* EXPERIENCE */
+.experience-item {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.experience-item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.exp-year {
+  color: var(--orange);
+  font-size: 10px;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.exp-title {
+  font-size: 11px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.exp-org {
+  font-size: 10px;
+  color: var(--ink-light);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.exp-desc {
+  font-size: 9px;
+  line-height: 2.2;
+  color: var(--ink-light);
+  display: block;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .projects-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .projects-grid,
+  .skills-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="#skills">SKILLS</a></li>
+    <li><a href="#projects">PROJECTS</a></li>
+    <li><a href="#experience">EXPERIENCE</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1 class="hero-name">
+    RYAN
+    <span>ROSENBAUM</span>
+  </h1>
+
+  <p class="hero-sub">
+    HARDWARE ENGINEER IN TRAINING. I DESIGN CIRCUITS, BUILD EMBEDDED SYSTEMS,
+    AND DEBUG AT THE OSCILLOSCOPE.
+  </p>
+
+  <a href="#projects" class="btn btn-primary">VIEW PROJECTS</a>
+</section>
+
+<section class="section" id="skills">
+  <h2 class="section-title">SKILLS</h2>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-name">CIRCUIT DESIGN</div>
+      <div class="skill-desc">SCHEMATICS, PCB DESIGN, ANALOG SYSTEMS</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-name">EMBEDDED C</div>
+      <div class="skill-desc">LOW LEVEL PROGRAMMING, MICROCONTROLLERS</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-name">MICROCONTROLLERS</div>
+      <div class="skill-desc">ARDUINO, STM32, HARDWARE INTERFACING</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-name">3D MODELING</div>
+      <div class="skill-desc">FUSION 360, PROTOTYPING</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <h2 class="section-title">PROJECTS</h2>
+
+  <div class="projects-grid">
+    <div class="project-card">
+        <div class="project-image">
+          <img src="/img/project1.jpg" alt="Project One" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+      <div class="project-content">
+        <div class="project-title">PROJECT ONE</div>
+        <div class="project-desc">DESCRIPTION HERE</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image"></div>
+      <div class="project-content">
+        <div class="project-title">PROJECT TWO</div>
+        <div class="project-desc">DESCRIPTION HERE</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image"></div>
+      <div class="project-content">
+        <div class="project-title">PROJECT THREE</div>
+        <div class="project-desc">DESCRIPTION HERE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <h2 class="section-title">EXPERIENCE</h2>
+
+  <div class="experience-item">
+    <span class="exp-year">2026</span>
+    <span class="exp-title">LEAD CODER</span>
+    <span class="exp-org">ROBOTICS CLUB</span>
+    <span class="exp-desc">WORKED ON AUTONOMOUS SYSTEMS AND ROBOT PROGRAMMING.</span>
+  </div>
+
+  <div class="experience-item">
+    <span class="exp-year">2026</span>
+    <span class="exp-title">MEMBER</span>
+    <span class="exp-org">SCIENCE OLYMPIAD</span>
+    <span class="exp-desc">COMPETED IN ENGINEERING CHALLENGES AND EVENTS.</span>
+  </div>
+
+</section>
+
+</body>
+</html>
