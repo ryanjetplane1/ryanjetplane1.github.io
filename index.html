@@ -259,7 +259,11 @@ nav {
 </head>
 
 <body>
-
+<script>
+  window.addEventListener("hashchange", function() {
+      history.replaceState(null, document.title, window.location.pathname + window.location.search);
+  });
+</script>
 <nav>
   <ul class="nav-links">
     <li><a href="#skills">SKILLS</a></li>
