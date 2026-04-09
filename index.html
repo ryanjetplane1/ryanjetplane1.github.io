@@ -260,10 +260,24 @@ nav {
 
 <body>
 <script>
-  window.addEventListener("hashchange", function() {
-      history.replaceState(null, document.title, window.location.pathname + window.location.search);
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault(); // Stop the default #hash jump
+      
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        // Smoothly scroll to the section
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+
+        // Clean the URL immediately without adding a #
+        history.replaceState(null, null, window.location.pathname + window.location.search);
+      }
+    });
   });
 </script>
+
 <nav>
   <ul class="nav-links">
     <li><a href="#skills">SKILLS</a></li>
