@@ -43,6 +43,8 @@ body::before {
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
 }
   
 nav {
@@ -63,7 +65,7 @@ nav {
 }
 
 .nav-links a {
-  font-size: 10px;
+  font-size: 13px;
   text-decoration: none;
   color: var(--ink-light);
   letter-spacing: 2px;
@@ -71,13 +73,13 @@ nav {
 
 
 .hero {
-  padding: 10rem 2rem 6rem;
-  max-width: 1000px;
+  padding: 12rem 2rem 7rem;
+  max-width: 1100px;
   margin: auto;
 }
 
 .hero-name {
-  font-size: clamp(20px, 5vw, 34px);
+  font-size: clamp(28px, 6vw, 48px);
   line-height: 1.8;
   letter-spacing: 3px;
 }
@@ -88,9 +90,9 @@ nav {
 }
 
 .hero-sub {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   max-width: 700px;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 2.4;
   letter-spacing: 1.5px;
   color: var(--ink-light);
@@ -99,8 +101,8 @@ nav {
 .btn {
   display: inline-block;
   margin-top: 2.5rem;
-  padding: 14px 22px;
-  font-size: 10px;
+  padding: 16px 26px;
+  font-size: 13px;
   text-decoration: none;
   border: 2px solid var(--orange);
   letter-spacing: 2px;
@@ -112,14 +114,14 @@ nav {
 }
 
 .section {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
-  padding: 6rem 2rem;
+  padding: 7rem 2rem;
 }
 
 .section-title {
-  font-size: 14px;
-  margin-bottom: 2rem;
+  font-size: 20px;
+  margin-bottom: 2.5rem;
   color: var(--orange);
   letter-spacing: 2px;
 }
@@ -131,20 +133,26 @@ nav {
   gap: 1.5rem;
 }
 
+.skills-grid > * {
+  min-width: 0;
+}
+
 .skill-card {
   border: 2px solid var(--border);
-  padding: 1.2rem;
+  padding: 1.5rem;
 }
 
 .skill-name {
-  font-size: 10px;
-  margin-bottom: 0.6rem;
+  font-size: 13px;
+  margin-bottom: 0.8rem;
+  overflow-wrap: break-word;
 }
 
 .skill-desc {
-  font-size: 9px;
+  font-size: 12px;
   line-height: 2;
   color: var(--ink-light);
+  overflow-wrap: break-word;
 }
 
 /* PROJECTS */
@@ -160,6 +168,7 @@ nav {
   text-decoration: none;
   color: inherit;
   display: block;
+  position: relative;
   transition: border-color 0.2s;
 }
 
@@ -168,7 +177,7 @@ nav {
 }
 
 .project-image {
-  height: 140px;
+  height: 180px;
   background: #e8e4de;
   border-bottom: 2px solid var(--border);
   overflow: hidden;
@@ -184,30 +193,52 @@ nav {
 }
 
 .project-image-placeholder {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--ink-light);
   letter-spacing: 1px;
   font-family: 'Press Start 2P', monospace;
 }
 
 .project-content {
-  padding: 1rem;
+  padding: 1.25rem;
 }
 
 .project-title {
-  font-size: 10px;
-  margin-bottom: 0.6rem;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 0.8rem;
 }
 
 .project-desc {
-  font-size: 9px;
+  font-size: 12px;
   line-height: 2;
   color: var(--ink-light);
 }
 
+#projects-toggle {
+  margin-top: 2.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  background: white;
+  color: var(--orange);
+}
+
+#projects-toggle:hover {
+  background: var(--orange);
+  color: white;
+}
+
+.projects-grid .project-card.hidden {
+  display: none;
+}
+
 
 .experience-item {
-  padding: 1.5rem 0;
+  padding: 2rem 0;
   border-top: 1px solid var(--border);
 }
 
@@ -217,26 +248,26 @@ nav {
 
 .exp-year {
   color: var(--orange);
-  font-size: 10px;
+  font-size: 13px;
   display: block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .exp-title {
-  font-size: 11px;
+  font-size: 15px;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
 }
 
 .exp-org {
-  font-size: 10px;
+  font-size: 13px;
   color: var(--ink-light);
   display: block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .exp-desc {
-  font-size: 9px;
+  font-size: 12px;
   line-height: 2.2;
   color: var(--ink-light);
   display: block;
@@ -250,6 +281,42 @@ nav {
 @media (max-width: 600px) {
   .projects-grid,
   .skills-grid { grid-template-columns: 1fr; }
+
+  .section { padding: 4rem 1.25rem; }
+  .hero { padding: 9rem 1.25rem 5rem; }
+
+  .nav-links {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .hero-name { font-size: clamp(22px, 7vw, 32px); }
+  .hero-sub { font-size: 13px; }
+  .section-title { font-size: 16px; }
+
+  .project-image { height: 200px; }
+
+  #projects-toggle {
+    width: 100%;
+    padding: 16px 0;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 10px; }
+  .hero-name { font-size: 20px; }
+  .hero-sub { font-size: 11px; }
+  .section-title { font-size: 14px; }
+  .project-title { font-size: 12px; }
+  .project-desc { font-size: 10px; }
 }
 </style>
 
@@ -324,57 +391,164 @@ nav {
 
   <div class="projects-grid">
 
-    <a href="https://github.com/ryanjetplane1/Lumen" target="_blank" class="project-card">
+    <a href="https://github.com/ryanjetplane1/Turbojet" target="_blank" class="project-card">
       <div class="project-image">
-        <img src="/img/project1.jpg" alt="Project One">
+        <img src="https://github.com/user-attachments/assets/64979d24-83e0-4133-ae43-3eae69104449" alt="Turbojet">
       </div>
       <div class="project-content">
-        <div class="project-title">LUMEN MINI</div>
-        <div class="project-desc">A TINY SPOTIFY MACRO FOR YOUR DESK</div>
+        <div class="project-title">TURBOJET</div>
+        <div class="project-desc">A MINIATURE JET FOR DESKTOP DISPLAY</div>
       </div>
     </a>
 
-    <div class="project-card">
+    <a href="https://github.com/ryanjetplane1/Night-Vision-Cam" target="_blank" class="project-card">
       <div class="project-image">
-        <span class="project-image-placeholder">IMG HERE</span>
+        <img src="https://github.com/user-attachments/assets/65a176c9-3c9a-48a8-8f03-5b8672d4621b" alt="Night Vision Cam">
       </div>
       <div class="project-content">
-        <div class="project-title">PROJECT TWO</div>
-        <div class="project-desc">DESCRIPTION HERE</div>
+        <div class="project-title">NIGHT VISION CAM</div>
+        <div class="project-desc">A DRONE CAM CONVERTED TO A NIGHT VISION GOGGLE SETUP</div>
       </div>
-    </div>
+    </a>
 
-    <div class="project-card">
+    <a href="https://github.com/ryanjetplane1/K3Y-BLE-Macro-Keypad" target="_blank" class="project-card">
       <div class="project-image">
-        <span class="project-image-placeholder">IMG HERE</span>
+        <img src="https://github.com/user-attachments/assets/46accc81-fb6a-4021-981c-a8541892e624" alt="K3Y BLE Macro Keypad">
       </div>
       <div class="project-content">
-        <div class="project-title">PROJECT THREE</div>
-        <div class="project-desc">DESCRIPTION HERE</div>
+        <div class="project-title">K3Y BLE MACRO KEYPAD</div>
+                <div class="project-desc">A 3-KEY WIRELESS BLE KEYBOARD THE SIZE OF YOUR HAND FOR CUSTOM HOTKEYS</div>
       </div>
-    </div>
+    </a>
+
+    <a href="https://github.com/ryanjetplane1/PCB-Business-Card" target="_blank" class="project-card">
+      <div class="project-image">
+        <img src="https://github.com/user-attachments/assets/3224da0f-a73d-49e3-b49d-3de24451d1d7" alt="PCB Business Card">
+      </div>
+      <div class="project-content">
+        <div class="project-title">PCB BUSINESS CARD</div>
+                <div class="project-desc">A SIMPLE NFC TAP CARD THAT CAN TRANSMIT INFO SUCH AS LINKS</div>
+      </div>
+    </a>
+
+    <a href="https://github.com/ryanjetplane1/ATTINY-Led-Keychain" target="_blank" class="project-card">
+      <div class="project-image">
+        <img src="https://github.com/user-attachments/assets/7b7fa76e-f64e-465a-84b3-e68c76fcea5d" alt="ATTINY LED Keychain">
+      </div>
+      <div class="project-content">
+        <div class="project-title">ATTINY LED KEYCHAIN</div>
+        <div class="project-desc">A LED DISPLAY KEYCHAIN USING MOSTLY SMD PARTS</div>
+      </div>
+    </a>
+
+    <a href="https://github.com/ryanjetplane1/Heart-Led" target="_blank" class="project-card">
+      <div class="project-image">
+        <img src="https://github.com/user-attachments/assets/98020ff8-0afd-4a6d-98cb-f26bab4ec3ba" alt="Heart LED">
+      </div>
+      <div class="project-content">
+        <div class="project-title">HEART LED</div>
+                <div class="project-desc">A INTERACTIVE LED DISPLAY USING A 555 TIMER CIRCUIT WITH SPEED CONTROLLED BY A POTENTIOMETER</div>
+      </div>
+    </a>
+
+    <a href="https://github.com/ryanjetplane1/RC-Foam-Plane" target="_blank" class="project-card">
+      <div class="project-image">
+        <img src="https://github.com/user-attachments/assets/dd03bf5f-607b-4de5-a442-0daaf955462d" alt="RC Foam Plane">
+      </div>
+      <div class="project-content">
+        <div class="project-title">RC FOAM PLANE</div>
+        <div class="project-desc">A FULLY CUSTOM LOW SPEED RC GLIDER HYBRID WITH A 4FT WINGSPAN</div>
+      </div>
+    </a>
+
+    <a href="https://github.com/ryanjetplane1/PortableWifiPentester" target="_blank" class="project-card">
+      <div class="project-image">
+        <img src="https://github.com/user-attachments/assets/b6c29bee-bddd-4b27-bc2d-b2e2478ec963" alt="Portable Wifi Pentester">
+      </div>
+      <div class="project-content">
+        <div class="project-title">PORTABLE WIFI PENTESTER</div>
+        <div class="project-desc">A PORTABLE WIFI PENTESTER THE SIZE OF YOUR HAND</div>
+      </div>
+    </a>
+
+    <a href="https://github.com/ryanjetplane1/Lumen" target="_blank" class="project-card">
+      <div class="project-image">
+        <img src="https://raw.githubusercontent.com/ryanjetplane1/Lumen/main/image.jpg" alt="Lumen">
+      </div>
+      <div class="project-content">
+        <div class="project-title">LUMEN</div>
+        <div class="project-desc">A POCKET SIZED SYSTEM MONITOR POWERED BY USB-C</div>
+      </div>
+    </a>
 
   </div>
+
+  <button id="projects-toggle" class="btn" type="button">SHOW MORE</button>
 </section>
 
 <section class="section" id="experience">
   <h2 class="section-title">EXPERIENCE</h2>
 
   <div class="experience-item">
-    <span class="exp-year">2026</span>
+    <span class="exp-year">2026-2027</span>
+    <span class="exp-title">PRESIDENT</span>
+    <span class="exp-org">WALTER JOHNSON HIGH SCHOOL HACK CLUB</span>
+    <span class="exp-desc">PRESIDENT OF THE WALTER JOHNSON HIGH SCHOOL HACK CLUB.</span>
+  </div>
+
+  <div class="experience-item">
+    <span class="exp-year">2026-2027</span>
+    <span class="exp-title">FEATURED</span>
+    <span class="exp-org">MICROCHIP MAKES</span>
+    <span class="exp-desc">FEATURED ON MICROCHIP MAKES.</span>
+  </div>
+
+  <div class="experience-item">
+    <span class="exp-year">2026-2027</span>
+    <span class="exp-title">EVENT LEAD</span>
+    <span class="exp-org">SCIENCE OLYMPIAD</span>
+    <span class="exp-desc">EVENT LEAD, COMPETED IN 4 COMPETITONS CONSISTANTLY PLACING TOP 15 IN CAD AND EV.</span>
+  </div>
+
+  <div class="experience-item">
+    <span class="exp-year">2025-2026</span>
     <span class="exp-title">LEAD CODER</span>
     <span class="exp-org">ROBOTICS CLUB</span>
     <span class="exp-desc">LEAD CODER FOR VEX TEAM B, WORKED ON AUTONOMOUS CONTROL, AND ROBOT PROGRAMMING.</span>
   </div>
 
   <div class="experience-item">
-    <span class="exp-year">2026</span>
+    <span class="exp-year">2025-2026</span>
     <span class="exp-title">MEMBER</span>
     <span class="exp-org">SCIENCE OLYMPIAD</span>
     <span class="exp-desc">COMPETED IN 4 COMPETITONS CONSISTANTLY PLACING TOP 15 IN CAD AND EV.</span>
   </div>
 
 </section>
+
+<script>
+(function () {
+  var grid = document.querySelector('.projects-grid');
+  var toggle = document.getElementById('projects-toggle');
+  var cards = grid.querySelectorAll('.project-card');
+  var SHOW_COUNT = 3;
+  var expanded = false;
+
+  function update() {
+    cards.forEach(function (card, i) {
+      card.classList.toggle('hidden', !expanded && i >= SHOW_COUNT);
+    });
+    toggle.textContent = expanded ? 'SHOW LESS' : 'SHOW MORE (' + (cards.length - SHOW_COUNT) + ')';
+  }
+
+  toggle.addEventListener('click', function () {
+    expanded = !expanded;
+    update();
+  });
+
+  update();
+})();
+</script>
 
 </body>
 </html>
